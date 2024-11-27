@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+
+
+int main() {
+
+	long n, q;
+	cin >> n;
+
+	vector<long> a(n);
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+	cin >> q;
+	for (int k = 0; k < q; k++)
+	{
+		long l, r;
+		long _max = -1, maxin;
+
+		unordered_map<long, long> spis;
+		cin >> l >> r;
+		for (int i = l - 1; i <= r - 1; i++)
+		{
+			
+
+			spis[a[i]] += 1;
+			
+
+		}
+		for (auto z : spis)
+		{
+			if (_max < spis[z.first])
+			{
+				_max = spis[z.first];
+				maxin = z.first;
+			}
+
+		}
+		if (_max * 3 >= (r - l + 1) * 2)
+		{
+			cout << maxin << endl;
+		}
+		else
+		{
+			cout << -1 << endl;
+		}
+
+	}
+	
+}
