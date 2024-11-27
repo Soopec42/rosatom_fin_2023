@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main() {
+
+	long _max = 0;
+	int n;
+	cin >> n;
+	vector<vector<long>> vec(n, vector<long> (n));
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			
+			cin >> vec[i][j];
+			
+
+		}
+	}
+	vector<int> per(n);
+	for (int i = 0; i < n; i++)
+	{
+		per[i] = i;
+	}
+
+	do {
+
+		int sum = 0;
+		for (int i = 0; i < n; i++)
+		{
+			sum += vec[per[i]][i];
+		}
+		if (sum > _max)
+		{
+			_max = sum;
+		}
+
+	} while (next_permutation(per.begin(), per.end()));
+
+	cout << _max;
+	
+
+	
+}
